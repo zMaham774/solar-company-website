@@ -63,3 +63,8 @@ document.addEventListener("DOMContentLoaded", () => {
   });
   lucide.createIcons();
 });
+
+function toggleMenu() {
+  const ul = document.querySelector('#navbar ul');
+  ul.classList.toggle('show-menu');
+}

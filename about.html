@@ -37,7 +37,7 @@ bg-black/40 backdrop-blur-md shadow-md transition-all duration-300 font-[Poppins
         <img src="Logo.jpg" alt="Logo" class="h-10 w-auto">
         <h1 class="text-2xl font-bold text-green-600">SolarTech</h1>
       </div>
-
+      <button id="menuBtn" class="md:hidden text-white text-3xl" onclick="toggleMenu()">☰</button>
       <!-- LINKS -->
       <ul class="flex space-x-8 text-white font-bold text-xl">
 
@@ -397,5 +397,53 @@ bg-black/40 backdrop-blur-md shadow-md transition-all duration-300 font-[Poppins
     lucide.createIcons();
   </script>
   <script src="script.js"></script>
+  <script>
+    // Force navbar hide/show on scroll 
+    (function() {
+        // Wait for DOM to be fully loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            const navbar = document.getElementById('navbar');
+            
+            if (!navbar) {
+                console.error('Navbar not found');
+                return;
+            }
+            
+            // Ensure CSS transition exists
+            navbar.style.transition = 'transform 0.3s ease-in-out';
+            navbar.style.transform = 'translateY(0)';
+            
+            let lastScroll = 0;
+            let ticking = false;
+            
+            window.addEventListener('scroll', function() {
+                if (!ticking) {
+                    requestAnimationFrame(function() {
+                        const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+                        
+                        if (currentScroll > 80) {
+                            if (currentScroll > lastScroll) {
+                                // Scrolling down
+                                navbar.style.transform = 'translateY(-100%)';
+                            } else {
+                                // Scrolling up
+                                navbar.style.transform = 'translateY(0)';
+                            }
+                        } else {
+                            // At the top
+                            navbar.style.transform = 'translateY(0)';
+                        }
+                        
+                        lastScroll = currentScroll;
+                        ticking = false;
+                    });
+                    ticking = true;
+                }
+            });
+            
+            console.log('Navbar scroll handler attached successfully');
+        });
+    })();
+</script>
 </body>
 </html>

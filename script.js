@@ -96,22 +96,26 @@ const observer = new IntersectionObserver((entries) => {
 
 counters.forEach(counter => observer.observe(counter));
 
+/* ── Navbar hide on scroll down, show on scroll up ── */
 let lastScroll = 0;
 const navbar = document.getElementById("navbar");
 
 window.addEventListener("scroll", () => {
+  const currentScroll = window.pageYOffset;
 
-let currentScroll = window.pageYOffset;
+  if (currentScroll > lastScroll && currentScroll > 80) {
+    // Scrolling DOWN — hide navbar
+    navbar.style.transform = "translateY(-100%)";
+  } else {
+    // Scrolling UP — show navbar
+    navbar.style.transform = "translateY(0)";
+  }
 
-if(currentScroll > lastScroll){
-  // scrolling DOWN
-  navbar.style.transform = "translateY(-100%)";
-}
-else{
-  // scrolling UP
-  navbar.style.transform = "translateY(0)";
-}
-
-lastScroll = currentScroll;
-
+  lastScroll = currentScroll;
 });
+
+
+function toggleMenu() {
+  const ul = document.querySelector('#navbar ul');
+  ul.classList.toggle('show-menu');
+}
