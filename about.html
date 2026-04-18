@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SolarTech | Clean Energy Solutions</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Open+Sans:wght@400;600&display=swap"
+    rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            heading: ['Playfair Display', 'serif'],
+            body: ['Open Sans', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <header class="header">
+    <nav id="navbar" class="fixed top-0 w-full z-50 flex justify-between items-center px-10 py-4
+bg-black/40 backdrop-blur-md shadow-md transition-all duration-300 font-[Poppins]">
+
+      <!-- LOGO -->
+      <div class="flex items-center gap-2">
+        <img src="Logo.jpg" alt="Logo" class="h-10 w-auto">
+        <h1 class="text-2xl font-bold text-green-600">SolarTech</h1>
+      </div>
+
+      <!-- LINKS -->
+      <ul class="flex space-x-8 text-white font-bold text-xl">
+
+        <li><a href="index.html" class="hover:text-green-600 transition">Home</a></li>
+        <li><a href="about.html" class="hover:text-green-600 transition text-green-400 border-b-2 border-green-400 pb-1">About</a></li>
+        <li><a href="services.html" class="hover:text-green-600 transition">Services</a></li>
+        <li><a href="projects.html" class="hover:text-green-600 transition">Projects</a></li>
+        <li><a href="contact.html" class="hover:text-green-600 transition">Contact</a></li>
+
+      </ul>
+
+      <!-- BUTTON -->
+      <a href="contact.html" class="bg-green-600 text-white px-5 py-2 rounded-lg hover:bg-green-700 transition">Get Quote</a>
+    </nav>
+
+    <section class="relative h-[80vh] flex items-center justify-center text-center text-white overflow-hidden">
+
+      <!-- Background Image -->
+      <div class="absolute inset-0 w-full h-full">
+        <img src="about.jpeg" class="w-full h-full object-cover object-center scale-100" />
+      </div>
+
+      <!-- Dark Overlay -->
+      <div class="absolute inset-0 bg-black/50"></div>
+
+      <!-- Content -->
+      <div class="relative z-10 px-6">
+        <h1 class="text-4xl md:text-5xl font-bold mb-4 tracking-wide">
+          About Our Company
+        </h1>
+        <p class="text-lg md:text-xl text-gray-200 max-w-2xl mx-auto">
+          Delivering clean, reliable, and sustainable solar energy solutions for homes and businesses.
+        </p>
+      </div>
+
+    </section>
+  </header>
+  <main>
+    <section class="py-16 px-10 bg-white">
+
+      <div class="max-w-7xl mx-auto px-8 grid md:grid-cols-2 gap-16 items-center">
+
+        <!-- TEXT CONTENT -->
+        <div data-aos="fade-right">
+
+          <p class="text-green-600 font-semibold text-xl tracking-wider mb-6">
+            OUR INTRODUCTION
+          </p>
+
+          <h2 class="text-3xl font-bold text-gray-800 mb-6 leading-tight">
+            Pioneering Clean Energy for a Sustainable Tomorrow
+          </h2>
+
+          <p class="text-gray-600 mb-6 leading-relaxed">
+            SolarTech was founded with a single mission — to make clean,
+            affordable solar energy accessible to every home and business.
+            With years of experience in the renewable energy industry, we
+            have helped hundreds of families and companies across the region
+            reduce their electricity bills and carbon footprint. Our team of
+            certified engineers and solar specialists brings world-class
+            expertise to every project we undertake. We aim to deliver:
+          <ul class="space-y-2 text-gray-600 mb-6">
+            <li>✔ High-quality solar panels</li>
+            <li>✔ Professional installation</li>
+            <li>✔ Affordable pricing</li>
+          </ul>
+          </p>
+
+          <p class="text-gray-600 mb-8 leading-relaxed">
+            We believe that the future of energy is clean, green, and
+            limitless. At SolarTech, we don't just install solar panels,
+            we build long-term energy solutions tailored to your specific
+            needs and budget. From initial consultation to final
+            installation and after-sales support, we are committed to
+            delivering excellence at every step. Choosing SolarTech means
+            choosing a partner who is as invested in your energy future
+            as you are.
+          </p>
+
+          <a href="services.html" class="inline-block bg-green-600 text-white px-6 py-3 rounded-lg hover:bg-green-700 transition">
+            Learn More
+          </a>
+
+        </div>
+
+
+        <!-- IMAGE -->
+        <div data-aos="fade-left">
+
+          <img src="about-company.jpg"
+            class="w-full h-[500px] object-cover rounded-2xl shadow-lg hover:scale-105 transition duration-500">
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <section class="py-10">
+      <div class="text-center mb-12">
+        <p class="text-green-600 font-semibold text-xl uppercase tracking-widest mb-6">
+          What We Stand For
+        </p>
+        <h2 class="text-4xl font-bold text-gray-800">
+          Our Mission & Vision
+        </h2>
+        <div class="w-16 h-1 bg-green-600 mx-auto mt-4"></div>
+      </div>
+      <div class="grid md:grid-cols-2 min-h-[420px]">
+        <!-- MISSION -->
+        <div data-aos="fade-right" class="bg-green-600 text-white p-16 flex flex-col justify-center">
+
+          <div class="bg-white/20 w-16 h-16 rounded-full flex items-center justify-center mb-6">
+            <i data-lucide="target" class="w-8 h-8"></i>
+          </div>
+
+          <h3 class="text-3xl font-bold mb-3">Our Mission</h3>
+          <div class="w-12 h-1 bg-white rounded mb-6"></div>
+
+          <p class="text-green-100 leading-relaxed mb-4">
+            Our mission is to provide reliable, affordable, and sustainable solar
+            energy solutions that empower individuals and businesses to reduce
+            their carbon footprint and energy costs.
+          </p>
+          <p class="text-green-100 leading-relaxed">
+            We strive to deliver high-quality systems with exceptional customer
+            service and long-term value.
+          </p>
+        </div>
+
+        <!-- VISION -->
+        <div data-aos="fade-left" class="bg-slate-900 text-white p-16 flex flex-col justify-center">
+
+          <div class="bg-green-500/20 w-16 h-16 rounded-full flex items-center justify-center mb-6">
+            <i data-lucide="eye" class="w-8 h-8 text-green-400"></i>
+          </div>
+
+          <h3 class="text-3xl font-bold mb-3">Our Vision</h3>
+          <div class="w-12 h-1 bg-green-500 rounded mb-6"></div>
+
+          <p class="text-gray-300 leading-relaxed mb-4">
+            Our vision is to become a leading provider of solar energy solutions,
+            driving the global transition towards clean and renewable energy.
+          </p>
+          <p class="text-gray-300 leading-relaxed">
+            We aim to create a future where solar power is accessible to everyone,
+            helping build a greener and more sustainable world.
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="py-24 bg-white">
+      <div class="max-w-7xl mx-auto px-8">
+        <!-- Heading -->
+        <div class="text-center mb-16">
+          <p class="text-green-600 font-semibold text-xl tracking-wider mb-6">OUR TEAM</p>
+          <h2 class="text-4xl font-bold text-gray-800">Meet The Experts Behind Our Success</h2>
+        </div>
+        <!-- Scroll Container -->
+        <div class="flex space-x-8 overflow-x-auto pb-4 scroll-smooth">
+          <!-- MEMBER 1 -->
+          <div class="min-w-[280px] relative group">
+            <img src="team1.jpg" loading="lazy" class="w-full h-[400px] object-cover rounded-2xl">
+            <!-- Overlay -->
+            <div
+              class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition duration-500 rounded-2xl flex flex-col justify-end p-6">
+              <h3 class="text-white text-xl font-semibold">Solar Engineer</h3>
+            </div>
+          </div>
+
+          <!-- MEMBER 2 -->
+          <div class="min-w-[280px] relative group">
+            <img src="team2.jpg" loading="lazy" class="w-full h-[400px] object-cover rounded-2xl">
+            <div
+              class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition duration-500 rounded-2xl flex flex-col justify-end p-6">
+              <h3 class="text-white text-xl font-semibold">Project Manager</h3>
+            </div>
+          </div>
+
+          <!-- MEMBER 3 -->
+          <div class="min-w-[280px] relative group">
+            <img src="team3.jpg" loading="lazy" class="w-full h-[400px] object-cover rounded-2xl">
+            <div
+              class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition duration-500 rounded-2xl flex flex-col justify-end p-6">
+              <h3 class="text-white text-xl font-semibold">Installation Expert</h3>
+            </div>
+          </div>
+
+          <!-- MEMBER 4 -->
+          <div class="min-w-[280px] relative group">
+            <img src="team4.jpg" loading="lazy" class="w-full h-[400px] object-cover rounded-2xl">
+            <div
+              class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition duration-500 rounded-2xl flex flex-col justify-end p-6">
+              <h3 class="text-white text-xl font-semibold">Technical Specialist</h3>
+            </div>
+          </div>
+
+          <!-- MEMBER 5 -->
+          <div class="min-w-[280px] relative group">
+            <img src="team5.jpg" loading="lazy" class="w-full h-[400px] object-cover rounded-2xl">
+            <div
+              class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition duration-500 rounded-2xl flex flex-col justify-end p-6">
+              <h3 class="text-white text-xl font-semibold">Energy Consultant</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-24 mb-20 bg-green-600 text-white text-center">
+      <div class="max-w-4xl mx-auto px-6">
+        <h2 class="text-4xl md:text-5xl font-bold mb-6">
+          Ready to Switch to Solar Energy?
+        </h2>
+    
+        <p class="text-lg text-green-100 mb-8">
+          Start saving on your electricity bills and contribute to a greener future today.
+          Get a free consultation from our experts.
+        </p>
+    
+        <div class="flex flex-col md:flex-row justify-center gap-4">
+          <a href="contact.html"
+            class="border border-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-green-600 transition">
+            Contact Us
+          </a>
+    
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-top">
+
+      <!-- Head Office -->
+      <div class="footer-col">
+        <h3>Head Office</h3>
+        <p>SolarTech<br>Raiwand Road, Lahore</p>
+        <div class="contact-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+            <path
+              d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.62 3.22 2 2 0 0 1 3.59 1h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.91a16 16 0 0 0 6.08 6.08l1.27-.85a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z" />
+          </svg>
+          Call: +92-317-7050444
+        </div>
+        <div class="contact-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+            <rect x="2" y="4" width="20" height="16" rx="2" />
+            <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+          </svg>
+          info@SolarTech.com.pk
+        </div>
+      </div>
+
+      <!-- For Reservations -->
+      <div class="footer-col">
+        <h3>For Information</h3>
+        <p>Office no 4 &amp; 5 Lower Ground,<br>SolarTech Tower, Raiwand Road, Lahore</p>
+        <div class="contact-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+            <path
+              d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.62 3.22 2 2 0 0 1 3.59 1h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.91a16 16 0 0 0 6.08 6.08l1.27-.85a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z" />
+          </svg>
+          Call: +92-317-7050444
+        </div>
+        <div class="contact-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+            <rect x="2" y="4" width="20" height="16" rx="2" />
+            <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+          </svg>
+          info@SolarTech.com.pk
+        </div>
+      </div>
+
+      <!-- Legal -->
+      <div class="footer-col legal">
+        <h3>Legal</h3>
+        <ul>
+          <li><a href="#">Terms</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Trust</a></li>
+          <li><a href="#">Customer Business Agreement</a></li>
+          <li><a href="about.html" class="underlined">About us</a></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <!-- Divider with social icons -->
+    <div class="footer-divider">
+      <div class="line"></div>
+      <div class="social-icons">
+
+        <!-- Facebook -->
+        <a href="http://facebook.com/" aria-label="Facebook">
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
+          </svg>
+        </a>
+
+        <!-- Instagram -->
+        <a href="https://www.instagram.com/" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+            <circle cx="12" cy="12" r="4" />
+            <circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" />
+          </svg>
+        </a>
+
+        <!-- LinkedIn -->
+        <a href="https://www.linkedin.com/" aria-label="LinkedIn">
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+            <rect x="2" y="9" width="4" height="12" />
+            <circle cx="4" cy="4" r="2" />
+          </svg>
+        </a>
+
+        <!-- Email -->
+        <a href="https://gmail.com/" aria-label="Email">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="2" y="4" width="20" height="16" rx="2" />
+            <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+          </svg>
+        </a>
+
+        <!-- X / Twitter -->
+        <a href="https://x.com/" aria-label="X">
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path
+              d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+          </svg>
+        </a>
+
+      </div>
+      <div class="line"></div>
+    </div>
+
+    <!-- Copyright -->
+    <div class="footer-bottom">
+      Copyright &copy; SolarTech, Inc.
+    </div>
+  </footer>
+
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init({
+  duration: 600,      // faster animations (default is 400)
+  once: true,         // animate only ONCE, not every scroll
+  easing: 'ease-out', // smoother easing
+  delay: 0
+});
+  </script>
+  <script>
+    lucide.createIcons();
+  </script>
+  <script src="script.js"></script>
+</body>
+</html>

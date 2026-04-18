@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SolarTech | Our Projects</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            heading: ['Playfair Display', 'serif'],
+            body: ['Open Sans', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+    /* ── Slider Core ── */
+    .slider-wrapper {
+      position: relative;
+      width: 100%;
+      height: 520px;
+      overflow: hidden;
+      border-radius: 1.25rem;
+    }
+
+    .slide {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      transition: opacity 1.2s ease-in-out;
+      pointer-events: none;
+    }
+
+    .slide.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+
+    /* Overlay gradient on each slide */
+    .slide-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.1) 60%, transparent 100%);
+    }
+
+    /* Slide info at bottom */
+    .slide-info {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 2rem;
+      transform: translateY(8px);
+      transition: transform 0.5s ease;
+    }
+
+    .slide.active .slide-info {
+      transform: translateY(0);
+    }
+
+    /* Dot indicators */
+    .dots-container {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 1.25rem;
+    }
+
+    .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 9999px;
+      background: #d1d5db;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .dot.active {
+      background: #16a34a;
+      width: 28px;
+    }
+
+    /* Progress bar on top of slider */
+    .progress-bar {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 3px;
+      background: #16a34a;
+      z-index: 20;
+      transition: width linear;
+    }
+
+    /* Pause / Play button */
+    .control-btn {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      z-index: 20;
+      background: rgba(0,0,0,0.4);
+      backdrop-filter: blur(6px);
+      border: none;
+      border-radius: 9999px;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      color: white;
+      transition: background 0.3s;
+    }
+
+    .control-btn:hover {
+      background: rgba(22,163,74,0.7);
+    }
+
+    /* Section label line */
+    .section-label::before {
+      content: '';
+      display: inline-block;
+      width: 36px;
+      height: 3px;
+      background: #16a34a;
+      vertical-align: middle;
+      margin-right: 10px;
+      border-radius: 2px;
+    }
+
+    /* Stats counter */
+    .stat-card {
+      border-left: 3px solid #16a34a;
+    }
+
+    /* Hover lift on project section */
+    .project-section {
+      transition: transform 0.3s ease;
+    }
+
+    body {
+      font-family: 'Open Sans', sans-serif;
+    }
+  </style>
+</head>
+
+<body class="bg-white text-gray-800">
+
+  <!--NAVBAR-->
+  <header>
+    <nav id="navbar" class="fixed top-0 w-full z-50 flex justify-between items-center px-10 py-4
+      bg-black/40 backdrop-blur-md shadow-md transition-all duration-300 font-[Poppins]">
+
+      <!-- LOGO -->
+      <div class="flex items-center gap-2">
+        <img src="Logo.jpg" alt="Logo" class="h-10 w-auto">
+        <h1 class="text-2xl font-bold text-green-600">SolarTech</h1>
+      </div>
+
+      <!-- LINKS -->
+      <ul class="flex space-x-8 text-white font-bold text-xl">
+        <li><a href="index.html" class="hover:text-green-600 transition">Home</a></li>
+        <li><a href="about.html" class="hover:text-green-600 transition">About</a></li>
+        <li><a href="services.html" class="hover:text-green-600 transition">Services</a></li>
+        <li><a href="projects.html" class="hover:text-green-600 transition text-green-400 border-b-2 border-green-400 pb-1">Projects</a></li>
+        <li><a href="contact.html" class="hover:text-green-600 transition">Contact</a></li>
+      </ul>
+
+      <!-- BUTTON -->
+      <a href="contact.html" class="bg-green-600 text-white px-5 py-2 rounded-lg hover:bg-green-700 transition">Get Quote</a>
+    </nav>
+  </header>
+
+  <!--HERO BANNER -->
+  <section class="relative h-[80vh] flex items-center justify-center text-center text-white overflow-hidden">
+    <div class="absolute inset-0">
+      <img src="projects-hero.jpg" class="w-full h-full object-cover object-center" alt="Projects Hero" />
+    </div>
+    <div class="absolute inset-0 bg-black/55"></div>
+    <div class="relative z-10 px-6" data-aos="fade-up">
+      <h1 class="text-5xl md:text-6xl font-bold mb-5 font-heading">Our Proud Projects</h1>
+      <p class="text-lg md:text-xl text-gray-200 max-w-2xl mx-auto">
+        From rooftop homes to industrial powerhouses — explore some of our completed solar installations.</p>
+    </div>
+  </section>
+
+  <!--STATS BAR -->
+  <section class="bg-gray-50 py-12 px-10" data-aos="fade-up">
+    <div class="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-6">
+
+      <div class="stat-card pl-5 py-2">
+        <p class="text-4xl font-bold text-green-600">50+</p>
+        <p class="text-gray-500 text-sm mt-1">Projects Completed</p>
+      </div>
+
+      <div class="stat-card pl-5 py-2">
+        <p class="text-4xl font-bold text-green-600">10+</p>
+        <p class="text-gray-500 text-sm mt-1">Cities Covered</p>
+      </div>
+
+      <div class="stat-card pl-5 py-2">
+        <p class="text-4xl font-bold text-green-600">50MW</p>
+        <p class="text-gray-500 text-sm mt-1">Energy Generated</p>
+      </div>
+
+      <div class="stat-card pl-5 py-2">
+        <p class="text-4xl font-bold text-green-600">98%</p>
+        <p class="text-gray-500 text-sm mt-1">Client Satisfaction</p>
+      </div>
+
+    </div>
+  </section>
+
+  <main class="max-w-7xl mx-auto px-6 md:px-10 py-20 space-y-28">
+
+    <!--COMMERCIAL PROJECTS -->
+    <section class="project-section" data-aos="fade-up">
+
+      <!-- Section Header -->
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
+        <div>
+          <p class="section-label text-green-600 font-semibold uppercase tracking-widest text-sm mb-2">Category 01</p>
+          <h2 class="text-4xl font-bold text-gray-800 font-heading">Commercial Projects</h2>
+          <div class="w-14 h-1 bg-green-600 mt-3 rounded"></div>
+        </div>
+        <p class="text-gray-500 max-w-md text-sm leading-relaxed">
+          Large-scale solar installations for offices, shopping centers, and corporate buildings — reducing operational costs and carbon emissions significantly.
+        </p>
+      </div>
+
+      <!-- Slider -->
+      <div class="slider-wrapper shadow-2xl" id="slider-commercial">
+
+        <!-- Progress Bar -->
+        <div class="progress-bar" id="progress-commercial"></div>
+
+        <!-- Pause Button -->
+        <button class="control-btn" onclick="togglePause('commercial')" id="btn-commercial" title="Pause">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16" id="icon-commercial">
+            <path d="M5.5 3.5A1.5 1.5 0 0 1 7 5v6a1.5 1.5 0 0 1-3 0V5a1.5 1.5 0 0 1 1.5-1.5zm5 0A1.5 1.5 0 0 1 12 5v6a1.5 1.5 0 0 1-3 0V5a1.5 1.5 0 0 1 1.5-1.5z"/>
+          </svg>
+        </button>
+
+        <!-- Slide 1 -->
+        <div class="slide active">
+          <img src="commercial1.jpg" alt="Commercial Project 1" />
+          <div class="slide-overlay"></div>
+          <div class="slide-info text-white">
+            <span class="bg-green-600 text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-wider">Commercial</span>
+            <h3 class="text-2xl font-bold mt-2">DHA Office Complex — Lahore</h3>
+            <p class="text-gray-300 text-sm mt-1">⚡ 150kW System &nbsp;|&nbsp; 📍 Lahore &nbsp;|&nbsp; ✅ Completed 2024</p>
+          </div>
+        </div>
+
+        <!-- Slide 2 -->
+        <div class="slide">
+          <img src="commercial2.jpg" alt="Commercial Project 2" />
+          <div class="slide-overlay"></div>
+          <div class="slide-info text-white">
+            <span class="bg-green-600 text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-wider">Commercial</span>
+            <h3 class="text-2xl font-bold mt-2">Packages Mall Rooftop — Lahore</h3>
+            <p class="text-gray-300 text-sm mt-1">⚡ 300kW System &nbsp;|&nbsp; 📍 Lahore &nbsp;|&nbsp; ✅ Completed 2023</p>
+          </div>
+        </div>
+
+        <!-- Slide 3 -->
+        <div class="slide">
+          <img src="commercial3.jpg" alt="Commercial Project 3" />
+          <div class="slide-overlay"></div>
+          <div class="slide-info text-white">
+            <span class="bg-green-600 text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-wider">Commercial</span>
+            <h3 class="text-2xl font-bold mt-2">Tech Park Building — Islamabad</h3>
+            <p class="text-gray-300 text-sm mt-1">⚡ 200kW System &nbsp;|&nbsp; 📍 Islamabad &nbsp;|&nbsp; ✅ Completed 2024</p>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Dots -->
+      <div class="dots-container" id="dots-commercial">
+        <div class="dot active" onclick="goToSlide('commercial', 0)"></div>
+        <div class="dot" onclick="goToSlide('commercial', 1)"></div>
+        <div class="dot" onclick="goToSlide('commercial', 2)"></div>
+      </div>
+
+    </section>
+
+    <!--RESIDENTIAL PROJECTS -->
+    <section class="project-section" data-aos="fade-up">
+
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
+        <div>
+          <p class="section-label text-green-600 font-semibold uppercase tracking-widest text-sm mb-2">Category 02</p>
+          <h2 class="text-4xl font-bold text-gray-800 font-heading">Residential Projects</h2>
+          <div class="w-14 h-1 bg-green-600 mt-3 rounded"></div>
+        </div>
+        <p class="text-gray-500 max-w-md text-sm leading-relaxed">
+          Helping families across achieve energy independence with affordable, high-quality home solar systems tailored to every household.
+        </p>
+      </div>
+
+      <div class="slider-wrapper shadow-2xl" id="slider-residential">
+        <div class="progress-bar" id="progress-residential"></div>
+        <button class="control-btn" onclick="togglePause('residential')" id="btn-residential" title="Pause">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16" id="icon-residential">
+            <path d="M5.5 3.5A1.5 1.5 0 0 1 7 5v6a1.5 1.5 0 0 1-3 0V5a1.5 1.5 0 0 1 1.5-1.5zm5 0A1.5 1.5 0 0 1 12 5v6a1.5 1.5 0 0 1-3 0V5a1.5 1.5 0 0 1 1.5-1.5z"/>
+          </svg>
+        </button>
+
+        <div class="slide active">
+          <img src="residential1.jpg" alt="Residential 1" />
+          <div class="slide-overlay"></div>
+          <div class="slide-info text-white">
+            <span class="bg-blue-600 text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-wider">Residential</span>
+            <h3 class="text-2xl font-bold mt-2">Bahria Town Villa — Lahore</h3>
+            <p class="text-gray-300 text-sm mt-1">⚡ 10kW System &nbsp;|&nbsp; 📍 Lahore &nbsp;|&nbsp; ✅ Completed 2024</p>
+          </div>
+        </div>
+
+        <div class="slide">
+          <img src="residential2.jpg" alt="Residential 2" />
+          <div class="slide-overlay"></div>
+          <div class="slide-info text-white">
+            <span class="bg-blue-600 text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-wider">Residential</span>
+            <h3 class="text-2xl font-bold mt-2">Model Town Home — Lahore</h3>
+            <p class="text-gray-300 text-sm mt-1">⚡ 7kW System &nbsp;|&nbsp; 📍 Lahore &nbsp;|&nbsp; ✅ Completed 2023</p>
+          </div>
+        </div>
+
+        <div class="slide">
+          <img src="residential3.jpg" alt="Residential 3" />
+          <div class="slide-overlay"></div>
+          <div class="slide-info text-white">
+            <span class="bg-blue-600 text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-wider">Residential</span>
+            <h3 class="text-2xl font-bold mt-2">Gulberg Residence — Lahore</h3>
+            <p class="text-gray-300 text-sm mt-1">⚡ 12kW System &nbsp;|&nbsp; 📍 Lahore &nbsp;|&nbsp; ✅ Completed 2024</p>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="dots-container" id="dots-residential">
+        <div class="dot active" onclick="goToSlide('residential', 0)"></div>
+        <div class="dot" onclick="goToSlide('residential', 1)"></div>
+        <div class="dot" onclick="goToSlide('residential', 2)"></div>
+      </div>
+
+    </section>
+
+    <!--INDUSTRIAL PROJECTS-->
+    <section class="project-section" data-aos="fade-up">
+
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
+        <div>
+          <p class="section-label text-green-600 font-semibold uppercase tracking-widest text-sm mb-2">Category 03</p>
+          <h2 class="text-4xl font-bold text-gray-800 font-heading">Industrial Projects</h2>
+          <div class="w-14 h-1 bg-green-600 mt-3 rounded"></div>
+        </div>
+        <p class="text-gray-500 max-w-md text-sm leading-relaxed">
+          Powering factories and industrial facilities with massive solar farms that deliver maximum output and minimal downtime.
+        </p>
+      </div>
+
+      <div class="slider-wrapper shadow-2xl" id="slider-industrial">
+        <div class="progress-bar" id="progress-industrial"></div>
+        <button class="control-btn" onclick="togglePause('industrial')" id="btn-industrial" title="Pause">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16" id="icon-industrial">
+            <path d="M5.5 3.5A1.5 1.5 0 0 1 7 5v6a1.5 1.5 0 0 1-3 0V5a1.5 1.5 0 0 1 1.5-1.5zm5 0A1.5 1.5 0 0 1 12 5v6a1.5 1.5 0 0 1-3 0V5a1.5 1.5 0 0 1 1.5-1.5z"/>
+          </svg>
+        </button>
+
+        <div class="slide active">
+          <img src="industrial1.jpg" alt="Industrial 1" />
+          <div class="slide-overlay"></div>
+          <div class="slide-info text-white">
+            <span class="bg-orange-600 text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-wider">Industrial</span>
+            <h3 class="text-2xl font-bold mt-2">Industrial Estate — Lahore</h3>
+            <p class="text-gray-300 text-sm mt-1">⚡ 1MW System &nbsp;|&nbsp; 📍 Lahore &nbsp;|&nbsp; ✅ Completed 2023</p>
+          </div>
+        </div>
+
+        <div class="slide">
+          <img src="industrial2.jpg" alt="Industrial 2" />
+          <div class="slide-overlay"></div>
+          <div class="slide-info text-white">
+            <span class="bg-orange-600 text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-wider">Industrial</span>
+            <h3 class="text-2xl font-bold mt-2">Textile Factory — Faisalabad</h3>
+            <p class="text-gray-300 text-sm mt-1">⚡ 500kW System &nbsp;|&nbsp; 📍 Faisalabad &nbsp;|&nbsp; ✅ Completed 2024</p>
+          </div>
+        </div>
+
+        <div class="slide">
+          <img src="industrial3.jpg" alt="Industrial 3" />
+          <div class="slide-overlay"></div>
+          <div class="slide-info text-white">
+            <span class="bg-orange-600 text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-wider">Industrial</span>
+            <h3 class="text-2xl font-bold mt-2">Solar Farm — Karachi</h3>
+            <p class="text-gray-300 text-sm mt-1">⚡ 2MW System &nbsp;|&nbsp; 📍 Karachi &nbsp;|&nbsp; ✅ Completed 2024</p>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="dots-container" id="dots-industrial">
+        <div class="dot active" onclick="goToSlide('industrial', 0)"></div>
+        <div class="dot" onclick="goToSlide('industrial', 1)"></div>
+        <div class="dot" onclick="goToSlide('industrial', 2)"></div>
+      </div>
+
+    </section>
+
+  </main>
+
+  <!--TESTIMONIAL -->
+  <section class="bg-gray-50 py-20 px-10" data-aos="fade-up">
+    <div class="max-w-3xl mx-auto text-center">
+      <svg class="w-10 h-10 text-green-500 mx-auto mb-6" fill="currentColor" viewBox="0 0 24 24">
+        <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/>
+      </svg>
+      <p class="text-xl text-gray-600 leading-relaxed italic mb-8">
+        "SolarTech transformed our factory's energy costs completely. Within the first year, we saved over Rs. 4 million on electricity bills. The installation was flawless and the team was incredibly professional throughout."
+      </p>
+      <div class="flex items-center justify-center gap-4">
+        <div class="w-12 h-12 rounded-full bg-green-600 flex items-center justify-center text-white font-bold text-lg">A</div>
+        <div class="text-left">
+          <p class="font-semibold text-gray-800">Ahmed Raza</p>
+          <p class="text-gray-500 text-sm">CEO, Raza Textile Mills — Faisalabad</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-24 mb-20 bg-green-600 text-white text-center">
+            <div class="max-w-4xl mx-auto px-6">
+                <h2 class="text-4xl md:text-5xl font-bold mb-6">
+                    Ready to Switch to Solar Energy?
+                </h2>
+
+                <p class="text-lg text-green-100 mb-8">
+                    Start saving on your electricity bills and contribute to a greener future today.
+                    Get a free consultation from our experts.
+                </p>
+
+                <div class="flex flex-col md:flex-row justify-center gap-4">
+                    <a href="contact.html"
+                        class="border border-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-green-600 transition">
+                        Contact Us
+                    </a>
+
+                </div>
+            </div>
+        </section>
+
+  <!--FOOTER-->
+  <footer>
+    <div class="footer-top">
+
+      <!-- Head Office -->
+      <div class="footer-col">
+        <h3>Head Office</h3>
+        <p>SolarTech<br>Raiwand Road, Lahore</p>
+        <div class="contact-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+            <path
+              d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.62 3.22 2 2 0 0 1 3.59 1h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.91a16 16 0 0 0 6.08 6.08l1.27-.85a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z" />
+          </svg>
+          Call: +92-317-7050444
+        </div>
+        <div class="contact-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+            <rect x="2" y="4" width="20" height="16" rx="2" />
+            <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+          </svg>
+          info@SolarTech.com.pk
+        </div>
+      </div>
+
+      <!-- For Reservations -->
+      <div class="footer-col">
+        <h3>For Information</h3>
+        <p>Office no 4 &amp; 5 Lower Ground,<br>SolarTech Tower, Raiwand Road, Lahore</p>
+        <div class="contact-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+            <path
+              d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.62 3.22 2 2 0 0 1 3.59 1h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.91a16 16 0 0 0 6.08 6.08l1.27-.85a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z" />
+          </svg>
+          Call: +92-317-7050444
+        </div>
+        <div class="contact-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+            <rect x="2" y="4" width="20" height="16" rx="2" />
+            <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+          </svg>
+          info@SolarTech.com.pk
+        </div>
+      </div>
+
+      <!-- Legal -->
+      <div class="footer-col legal">
+        <h3>Legal</h3>
+        <ul>
+          <li><a href="#">Terms</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Trust</a></li>
+          <li><a href="#">Customer Business Agreement</a></li>
+          <li><a href="about.html" class="underlined">About us</a></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <!-- Divider with social icons -->
+    <div class="footer-divider">
+      <div class="line"></div>
+      <div class="social-icons">
+
+        <!-- Facebook -->
+        <a href="http://facebook.com/" aria-label="Facebook">
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
+          </svg>
+        </a>
+
+        <!-- Instagram -->
+        <a href="https://www.instagram.com/" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+            <circle cx="12" cy="12" r="4" />
+            <circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" />
+          </svg>
+        </a>
+
+        <!-- LinkedIn -->
+        <a href="https://www.linkedin.com/" aria-label="LinkedIn">
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+            <rect x="2" y="9" width="4" height="12" />
+            <circle cx="4" cy="4" r="2" />
+          </svg>
+        </a>
+
+        <!-- Email -->
+        <a href="https://gmail.com/" aria-label="Email">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="2" y="4" width="20" height="16" rx="2" />
+            <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+          </svg>
+        </a>
+
+        <!-- X / Twitter -->
+        <a href="https://x.com/" aria-label="X">
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path
+              d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+          </svg>
+        </a>
+
+      </div>
+      <div class="line"></div>
+    </div>
+
+    <!-- Copyright -->
+    <div class="footer-bottom">
+      Copyright &copy; SolarTech, Inc.
+    </div>
+  </footer>
+
+ <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script src="projects.js"></script>
+</body>
+</html>
